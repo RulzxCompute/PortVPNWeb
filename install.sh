@@ -282,6 +282,28 @@ EOF
         systemctl daemon-reload
         systemctl enable --now portvpn-worker
         systemctl enable --now redis-server
+        mysql -u root  << 'EOF'
+CREATE TABLE IF NOT EXISTS `cache` (
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `expiration` int(11) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+EOF
+        mkdir -p storage/framework/cache/data
+mkdir -p storage/framework/sessions
+mkdir -p storage/framework/views
+mkdir -p storage/framework/testing
+mkdir -p storage/logs
+
+mkdir -p storage/app/public
+        chown -R www-data:www-data storage bootstrap/cache
+
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+
+chmod 777 storage/framework/cache
+chmod 777 storage/framework/cache/data
         
         echo ""
         echo -e "${GREEN}============================================${NC}"
