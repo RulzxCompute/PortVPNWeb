@@ -117,9 +117,9 @@ case $CHOICE in
         else
             echo -e "${YELLOW}Downloading from GitHub...${NC}"
             cd /tmp
-            curl -Lo portvpn.tar.gz https://github.com/yourusername/portvpn/releases/latest/download/portvpn.tar.gz
-            tar -xzf portvpn.tar.gz -C ${INSTALL_DIR} --strip-components=1
-            rm -f portvpn.tar.gz
+            curl -Lo portvpn-web.tar.gz https://github.com/RulzxCompute/PortVPNWeb/releases/latest/download/portvpn-web.tar.gz
+            tar -xzf portvpn-web.tar.gz -C ${INSTALL_DIR} --strip-components=1
+            rm -f portvpn-web.tar.gz
         fi
         
         cd ${INSTALL_DIR}
