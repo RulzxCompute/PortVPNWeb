@@ -136,7 +136,6 @@ case $CHOICE in
         sudo chmod -R 775 storage
         sudo chmod -R 775 bootstrap/cache
 
-        sudo chmod 664 .env
         
         # Install dependencies
         sudo -u www-data composer install --no-dev --optimize-autoloader > /dev/null 2>&1
@@ -144,6 +143,8 @@ case $CHOICE in
         # Setup environment
         cp .env.example .env
         sudo chmod 664 .env
+        sudo chmod -R 777 storage bootstrap/cache
+        sudo chmod 777 .env
         sed -i "s/DB_DATABASE=portvpn/DB_DATABASE=${DB_NAME}/" .env
         sed -i "s/DB_USERNAME=portvpn/DB_USERNAME=${DB_USER}/" .env
         sed -i "s/DB_PASSWORD=your_secure_password/DB_PASSWORD=${DB_PASS}/" .env
