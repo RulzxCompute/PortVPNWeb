@@ -16,15 +16,11 @@ Port tambahan: Rp 3.000
 Maksimal: 50 port per user
 🚀 Cara Install
 ```
-bash
-Copy
-# Download & extract
 git clone https://github.com/RulzxCompute/PortVPNWeb
 cd PortVPNWeb
 tar -xzf portvpn-web.tar.gz
 ```
 ```
-# Jalankan installer
 sudo ./install.sh
 ```
 # Pilih opsi:
@@ -32,14 +28,13 @@ sudo ./install.sh
 # 2 = Install Node Agent
 # 3 = Uninstall
 📋 Setelah Install
+# Create user
 ```
-bash
-Copy
-# Buat admin user
 cd /var/www/portvpn
 sudo -u www-data php artisan app:user:create
 ```
+
+# Instalation app
 ```
-# Inisialisasi app
 sudo -u www-data php artisan app:init
 ```
