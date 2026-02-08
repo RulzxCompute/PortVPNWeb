@@ -155,6 +155,31 @@ case $CHOICE in
         sudo -u www-data php artisan storage:link
         
         echo -e "${YELLOW}[8/10] Running migrations...${NC}"
+        echo
+
+SQL_COMMANDS=$(cat << EOF
+-- Show current users
+SELECT user, host FROM mysql.user WHERE user = 'portvpn';
+
+-- Drop the localhost user
+DROP USER IF EXISTS 'portvpn'@'localhost';
+
+-- Ensure the 127.0.0.1 user has no password
+ALTER USER 'portvpn'@'127.0.0.1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON portvpn.* TO 'portvpn'@'127.0.0.1';
+
+FLUSH PRIVILEGES;
+
+-- Show remaining users
+SELECT user, host FROM mysql.user WHERE user = 'portvpn';
+EOF
+)
+
+# Execute SQL commands
+echo "$SQL_COMMANDS" | mysql -u root
+
+echo
+echo "=== Updating Laravel .env file ==="
         sudo php artisan thinker
         sudo -u www-data php artisan migrate --force --seed
         sudo -u www-data php artisan app:init
