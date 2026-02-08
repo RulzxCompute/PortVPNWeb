@@ -123,7 +123,10 @@ case $CHOICE in
         fi
         
         cd ${INSTALL_DIR}
-        
+        mkdir storage
+        cd bootstarp
+        mkdir cache
+        cd ../
         # Set permissions
         chmod -R 755 storage bootstrap/cache
         chown -R www-data:www-data ${INSTALL_DIR}
