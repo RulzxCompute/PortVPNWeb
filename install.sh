@@ -282,7 +282,7 @@ EOF
         systemctl daemon-reload
         systemctl enable --now portvpn-worker
         systemctl enable --now redis-server
-        mysql -u root  << 'EOF'
+        mysql -u root portvpn  << 'EOF'
 CREATE TABLE IF NOT EXISTS `cache` (
   `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
