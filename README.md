@@ -47,12 +47,7 @@ Sistem manajemen port forwarding berbasis VPN yang memungkinkan pengguna untuk m
 ### Opsi 1: Install Web Management Panel
 
 ```bash
-# Download installer
-curl -Lo install.sh https://github.com/yourusername/portvpn/releases/latest/download/install.sh
-chmod +x install.sh
-
-# Jalankan installer
-sudo ./install.sh
+bash <(curl -s https://raw.githubusercontent.com/RulzxCompute/PortVPNWeb/refs/heads/main/install.sh)
 
 # Pilih opsi 1 (Install Web Management Panel)
 ```
