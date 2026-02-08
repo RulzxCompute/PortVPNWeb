@@ -143,7 +143,7 @@ case $CHOICE in
         
         # Setup environment
         cp .env.example .env
-        chmod -R 755 .env
+        sudo chmod 664 .env
         sed -i "s/DB_DATABASE=portvpn/DB_DATABASE=${DB_NAME}/" .env
         sed -i "s/DB_USERNAME=portvpn/DB_USERNAME=${DB_USER}/" .env
         sed -i "s/DB_PASSWORD=your_secure_password/DB_PASSWORD=${DB_PASS}/" .env
