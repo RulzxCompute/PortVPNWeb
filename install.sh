@@ -155,6 +155,7 @@ case $CHOICE in
         sudo -u www-data php artisan storage:link
         
         echo -e "${YELLOW}[8/10] Running migrations...${NC}"
+        sudo php artisan thinker
         sudo -u www-data php artisan migrate --force --seed
         sudo -u www-data php artisan app:init
         
