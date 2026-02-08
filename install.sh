@@ -334,6 +334,7 @@ chmod 777 storage/framework/cache/data
         # Run node agent installer
         curl -Lo portvpn-web.tar.gz https://github.com/RulzxCompute/PortVPNWeb/releases/latest/download/portvpn-web.tar.gz
         tar -xzf portvpn-web.tar.gz
+        cd portvpn-web
         if [ -f "$(dirname "$0")/node-agent/install.sh" ]; then
             bash $(dirname "$0")/node-agent/install.sh
         else
