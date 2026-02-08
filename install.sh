@@ -180,7 +180,6 @@ echo "$SQL_COMMANDS" | mysql -u root
 
 echo
 echo "=== Updating Laravel .env file ==="
-        sudo php artisan thinker
         sudo -u www-data php artisan migrate --force --seed
         sudo -u www-data php artisan app:init
         
