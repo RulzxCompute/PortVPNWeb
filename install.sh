@@ -130,6 +130,13 @@ case $CHOICE in
         # Set permissions
         chmod -R 755 storage bootstrap/cache
         chown -R www-data:www-data ${INSTALL_DIR}
+        sudo chown -R www-data:www-data storage
+        sudo chown -R www-data:www-data bootstrap/cache
+
+        sudo chmod -R 775 storage
+        sudo chmod -R 775 bootstrap/cache
+
+        sudo chmod 664 .env
         
         # Install dependencies
         sudo -u www-data composer install --no-dev --optimize-autoloader > /dev/null 2>&1
