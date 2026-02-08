@@ -124,7 +124,7 @@ case $CHOICE in
         
         cd ${INSTALL_DIR}
         mkdir storage
-        cd bootstarp
+        cd bootstrap
         mkdir cache
         cd ../
         # Set permissions
